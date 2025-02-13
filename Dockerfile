@@ -1,19 +1,21 @@
-FROM python:2.7.15-slim-stretch
+# Dedian 11 Bullseye is the last to include Python2
+FROM debian:bullseye
 
 ENV PYTHONDONTWRITEBYTECODE=1
 
 # Allow scripts to detect we're running in our own container
 RUN touch /addons-server-docker-container
 
+# FIXME
 # Add nodesource repository and requirements
-ADD docker/nodesource.gpg.key /etc/pki/gpg/GPG-KEY-nodesource
-RUN apt-get update && apt-get install -y \
-        apt-transport-https              \
-        gnupg2                           \
-    && rm -rf /var/lib/apt/lists/*
-RUN cat /etc/pki/gpg/GPG-KEY-nodesource | apt-key add -
-ADD docker/debian-stretch-nodesource-repo /etc/apt/sources.list.d/nodesource.list
-ADD docker/debian-stretch-backports-repo /etc/apt/sources.list.d/backports.list
+#ADD docker/nodesource.gpg.key /etc/pki/gpg/GPG-KEY-nodesource
+#RUN apt-get update && apt-get install -y \
+#        apt-transport-https              \
+#        gnupg2                           \
+#    && rm -rf /var/lib/apt/lists/*
+#RUN cat /etc/pki/gpg/GPG-KEY-nodesource | apt-key add -
+#ADD docker/debian-stretch-nodesource-repo /etc/apt/sources.list.d/nodesource.list
+#ADD docker/debian-stretch-backports-repo /etc/apt/sources.list.d/backports.list
 
 RUN apt-get update && apt-get install -y \
         # General (dev-) dependencies
@@ -31,13 +33,14 @@ RUN apt-get update && apt-get install -y \
         libmagic-dev \
         python-dev \
         python3-dev \
-        python-pip \
+        python-pip-whl \
         python3-pip \
         nodejs \
+        npm \
         # Git, because we're using git-checkout dependencies
         git \
         # Dependencies for mysql-python
-        mysql-client \
+        default-mysql-client \
         default-libmysqlclient-dev \
         swig \
         gettext \
@@ -52,16 +55,18 @@ RUN apt-get update && apt-get install -y \
         libmaxminddb-dev                 \
     && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update && apt-get -t stretch-backports install -y \
-        # For git-based files storage backend
-        libgit2-dev \
-    && rm -rf /var/lib/apt/lists/*
+# FIXME
+#RUN apt-get update && apt-get -t stretch-backports install -y \
+#        # For git-based files storage backend
+#        libgit2-dev \
+#    && rm -rf /var/lib/apt/lists/*
 
-ADD http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz /tmp
+# FIXME: The address changed? Is an account required now?
+#ADD http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz /tmp
 
-RUN mkdir -p /usr/local/share/GeoIP \
- && gunzip -c /tmp/GeoLite2-Country.mmdb.gz > /usr/local/share/GeoIP/GeoLite2-Country.mmdb \
- && rm -f /tmp/GeoLite2-Country.mmdb.gz
+#RUN mkdir -p /usr/local/share/GeoIP \
+# && gunzip -c /tmp/GeoLite2-Country.mmdb.gz > /usr/local/share/GeoIP/GeoLite2-Country.mmdb \
+# && rm -f /tmp/GeoLite2-Country.mmdb.gz
 
 # Compile required locale
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8
@@ -80,14 +85,16 @@ ENV PIP_SRC=/deps/src/
 ENV NPM_CONFIG_PREFIX=/deps/
 ENV SWIG_FEATURES="-D__x86_64__"
 
+# FIXME
 # Upgrade pip!
-RUN pip install --upgrade pip
+#RUN pip install --upgrade pip
 
+# FIXME
 # Install all python requires
-RUN mkdir -p /deps/{build,cache,src}/ && \
-    ln -s /code/package.json /deps/package.json && \
-    make update_deps && \
-    rm -rf /deps/build/ /deps/cache/
+#RUN mkdir -p /deps/{build,cache,src}/ && \
+#    ln -s /code/package.json /deps/package.json && \
+#    make update_deps && \
+#    rm -rf /deps/build/ /deps/cache/
 
 # Preserve bash history across image updates.
 # This works best when you link your local source code
