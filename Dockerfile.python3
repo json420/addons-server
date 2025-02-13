@@ -1,4 +1,4 @@
-FROM python:3.6-slim-stretch
+FROM debian:bookworm
 
 ENV PYTHONDONTWRITEBYTECODE=1
 
@@ -7,22 +7,9 @@ ENV PYTHON_VERSION_MAJOR 3
 # Allow scripts to detect we're running in our own container
 RUN touch /addons-server-docker-container
 
-# Update the main repositories to the archived repository
-RUN echo "deb http://archive.debian.org/debian stretch main contrib non-free" > /etc/apt/sources.list
-
-# Add nodesource repository and requirements
-ADD docker/nodesource.gpg.key /etc/pki/gpg/GPG-KEY-nodesource
-RUN apt-get update && apt-get install -y \
-        apt-transport-https              \
-        gnupg2                           \
-    && rm -rf /var/lib/apt/lists/*
-RUN cat /etc/pki/gpg/GPG-KEY-nodesource | apt-key add -
-ADD docker/debian-stretch-nodesource-repo /etc/apt/sources.list.d/nodesource.list
-ADD docker/debian-stretch-backports-repo /etc/apt/sources.list.d/backports.list
-
-RUN apt-get update && apt-get install -y --allow-downgrades \
-        # Downgrades
-        libssl1.1=1.1.0l-1~deb9u1 \
+RUN apt-get update
+RUN apt-get dist-upgrade -y
+RUN apt-get install -y \
         # General (dev-) dependencies
         bash-completion \
         build-essential \
@@ -36,11 +23,13 @@ RUN apt-get update && apt-get install -y --allow-downgrades \
         libffi-dev \
         libssl-dev \
         libmagic-dev \
+        python3-pip \
         nodejs \
+        npm \
         # Git, because we're using git-checkout dependencies
         git \
         # Dependencies for mysql-python
-        mysql-client \
+        default-mysql-client \
         default-libmysqlclient-dev \
         swig \
         gettext \
@@ -51,14 +40,10 @@ RUN apt-get update && apt-get install -y --allow-downgrades \
         # our makefile and ui-tests require uuid to be installed
         uuid \
         # Use libmaxmind for speedy geoip lookups
-        libmaxminddb0                    \
-        libmaxminddb-dev                 \
-    && rm -rf /var/lib/apt/lists/*
+        libmaxminddb0 \
+        libmaxminddb-dev \
 
-#RUN apt-get update && apt-get -t stretch-backports install -y \
-#        # For git-based files storage backend
-#        libgit2-dev \
-#    && rm -rf /var/lib/apt/lists/*
+#RUN rm -rf /var/lib/apt/lists/*
 
 #ADD http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz /tmp
 
@@ -84,10 +69,10 @@ ENV NPM_CONFIG_PREFIX=/deps/
 ENV SWIG_FEATURES="-D__x86_64__"
 
 # Install all python requires
-RUN mkdir -p /deps/{build,cache,src}/ && \
-    ln -s /code/package.json /deps/package.json && \
-    make update_deps && \
-    rm -rf /deps/build/ /deps/cache/
+#RUN mkdir -p /deps/{build,cache,src}/ && \
+#    ln -s /code/package.json /deps/package.json && \
+#    make update_deps && \
+#    rm -rf /deps/build/ /deps/cache/
 
 # Preserve bash history across image updates.
 # This works best when you link your local source code
