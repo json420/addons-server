@@ -1,5 +1,5 @@
 # Dedian 11 Bullseye is the last to include Python2
-FROM debian:bullseye
+FROM debian:bookworm
 
 ENV PYTHONDONTWRITEBYTECODE=1
 
@@ -31,9 +31,7 @@ RUN apt-get update && apt-get install -y \
         libffi-dev \
         libssl-dev \
         libmagic-dev \
-        python-dev \
         python3-dev \
-        python-pip-whl \
         python3-pip \
         nodejs \
         npm \
