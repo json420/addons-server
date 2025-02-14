@@ -7,6 +7,7 @@ ENV PYTHON_VERSION_MAJOR 3
 # Allow scripts to detect we're running in our own container
 RUN touch /addons-server-docker-container
 
+# Install needed Debian packages, then do some space saving cleanup
 RUN apt-get update
 RUN apt-get dist-upgrade -y
 RUN apt-get install -y \
@@ -60,8 +61,11 @@ RUN localedef -i en_US -f UTF-8 en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
+RUN python3 -m venv /ourvenv
+
 COPY . /code
 WORKDIR /code
+
 
 ENV PIP_BUILD=/deps/build/
 ENV PIP_CACHE_DIR=/deps/cache/
@@ -69,12 +73,11 @@ ENV PIP_SRC=/deps/src/
 ENV NPM_CONFIG_PREFIX=/deps/
 ENV SWIG_FEATURES="-D__x86_64__"
 
-# json420 thinks it would be a really good idea to use the packages from debian if possible
 # Install all python requires
-#RUN mkdir -p /deps/{build,cache,src}/ && \
-#    ln -s /code/package.json /deps/package.json && \
-#    make update_deps && \
-#    rm -rf /deps/build/ /deps/cache/
+RUN mkdir -p /deps/{build,cache,src}
+RUN ln -s /code/package.json /deps/package.json
+RUN . /ourvenv/bin/activate && make update_deps
+RUN rm -rf /deps/build/ /deps/cache/
 
 # Preserve bash history across image updates.
 # This works best when you link your local source code
