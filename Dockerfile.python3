@@ -23,6 +23,7 @@ RUN apt-get install -y \
         libffi-dev \
         libssl-dev \
         libmagic-dev \
+        python3-venv \
         python3-pip \
         nodejs \
         npm \
@@ -42,8 +43,8 @@ RUN apt-get install -y \
         # Use libmaxmind for speedy geoip lookups
         libmaxminddb0 \
         libmaxminddb-dev
-
-#RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/*
 
 #ADD http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz /tmp
 
