@@ -33,6 +33,7 @@ RUN apt-get install -y \
         # Dependencies for mysql-python
         default-mysql-client \
         default-libmysqlclient-dev \
+        pkg-config \
         swig \
         gettext \
         # Use rsvg-convert to render our static theme previews
