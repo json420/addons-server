@@ -3,49 +3,37 @@ pyinotify==0.9.6 \
 # ipython / ipdb for easier debugging, supervisor to run services
 # Remove ipython<6 version restriction when we move to python 3, see
 # https://github.com/mozilla/addons-server/issues/5380
-ipdb==0.11 \
-    --hash=sha256:7081c65ed7bfe7737f83fa4213ca8afd9617b42ff6b3f1daf9a3419839a2a00a
-ipython==5.8.0 \
-    --hash=sha256:37101b8cbe072fe17bff100bc03d096404e4a9a0357097aeb5b61677c042cab1 \
-    --hash=sha256:0371b7e4bd74954a35086eac949beeac5b1c9f5ce231e2e77df2286a293765e3 \
-    --hash=sha256:4bac649857611baaaf76bc82c173aa542f7486446c335fe1a6c05d0d491c8906 # pyup: <6.0
-watchdog==0.9.0 \
-    --hash=sha256:965f658d0732de3188211932aeb0bb457587f04f63ab4c1e33eab878e9de961d
-
+ipdb==0.13.13 \
+    --hash=sha256:45529994741c4ab6d2388bfa5d7b725c2cf7fe9deffabdb8a6113aa5ed449ed4
+ipython==8.32.0 \
+    --hash=sha256:cae85b0c61eff1fc48b0a8002de5958b6528fa9c8defb1894da63f42613708aa
+watchdog==6.0.0 \
+    --hash=sha256:20ffe5b202af80ab4266dcd3e91aae72bf2da48c0d33bdb15c66658e685e94e2
 # Dependencies for IPython 5.5
-traitlets==4.3.2 \
-    --hash=sha256:c6cb5e6f57c5a9bdaa40fa71ce7b4af30298fbab9ece9815b5d995ab6217c7d9 \
-    --hash=sha256:9c4bd2d267b7153df9152698efb1050a5d84982d3384a37b2c1f7723ba3e7835
-pexpect==4.6.0 \
-    --hash=sha256:3fbd41d4caf27fa4a377bfd16fef87271099463e6fa73e92a52f92dfee5d425b \
-    --hash=sha256:2a8e88259839571d1251d278476f3eec5db26deb73a70be5ed5dc5435e418aba
-ipython_genutils==0.2.0 \
-    --hash=sha256:72dd37233799e619666c9f639a9da83c34013a73e8bbc79a7a6348d93c61fab8 \
-    --hash=sha256:eb2e116e75ecef9d4d228fdc66af54269afa26ab4463042e33785b887c628ba8
-decorator==4.3.2 \
-    --hash=sha256:cabb249f4710888a2fc0e13e9a16c343d932033718ff62e1e9bc93a9d3a9122b \
-    --hash=sha256:33cd704aea07b4c28b3eb2c97d288a06918275dac0ecebdaf1bc8a48d98adb9e
-ptyprocess==0.6.0 \
-    --hash=sha256:d7cc528d76e76342423ca640335bd3633420dc1366f258cb31d05e865ef5ca1f \
-    --hash=sha256:923f299cc5ad920c68f2bc0bc98b75b9f838b93b599941a6b63ddbc2476394c0
+traitlets==5.14.3 \
+    --hash=sha256:b74e89e397b1ed28cc831db7aea759ba6640cb3de13090ca145426688ff1ac4f
+pexpect==4.9.0 \
+    --hash=sha256:7236d1e080e4936be2dc3e326cec0af72acf9212a7e1d060210e70a47e253523
+# ipython_genutils==0.2.0 "Pretend this doesn’t exist. Nobody should use it."
+# Quote from https://pypi.org/project/ipython_genutils/
+decorator==5.1.1 \
+    --hash=sha256:b8c3f85900b9dc423225913c5aace94729fe1fa9763b38939a95226f02d37186
+ptyprocess==0.7.0 \
+    --hash=sha256:4b41f3967fce3af57cc7e94b888626c18bf37a083e3651ca8feeb66d492fef35
+## OLD: `pickleshare` has had no releases since Sep 25, 2018
 pickleshare==0.7.5 \
-    --hash=sha256:9649af414d74d4df115d5d718f82acb59c9d418196b7b4290ed47a12ce62df56 \
-    --hash=sha256:87683d47965c1da65cdacaf31c8441d12b8044cdec9aca500cd78fc2c683afca
-prompt_toolkit==1.0.15 \
-    --hash=sha256:3f473ae040ddaa52b52f97f6b4a493cfa9f5920c255a12dc56a7d34397a398a4 \
-    --hash=sha256:1df952620eccb399c53ebb359cc7d9a8d3a9538cb34c5a1344bdbeb29fbcc381 \
-    --hash=sha256:858588f1983ca497f1cf4ffde01d978a3ea02b01c8a26a8bbc5cd2e66d816917 # pyup: <2.0.0
-wcwidth==0.1.7 \
-    --hash=sha256:f4ebe71925af7b40a864553f761ed559b43544f8f71746c2d756c7fe788ade7c \
-    --hash=sha256:3df37372226d6e63e1b1e1eda15c594bca98a22d33a23832a90998faa96bc65e
-simplegeneric==0.8.1 \
-    --hash=sha256:dc972e06094b9af5b855b3df4a646395e43d1c9d0d39ed345b7393560d0b9173
-isort==4.3.8 \
-    --hash=sha256:6c3110ff0871d3a45f0ba1b8f7cefe38e845887210c80d952479fa7e74e00ad7 \
-    --hash=sha256:78ebda8283402dbe15e1fe8dc73e6d72e5d3c6a0c5e8dc489b2a4372280037af
-# meld3 is required by supervisor
-meld3==1.0.2 \
-    --hash=sha256:b28a9bfac342aadb4557aa144bea9f8e6208bfb0596190570d10a892d35ff7dc
-# temporarily switched to supervisor master to get python3 support. see dev_without_hash.txt
-# supervisor==3.3.5 \
-#    --hash=sha256:1b4d6d2e551dcb49e928cfffea857b8cca6b64a4a8fb755dcf86addf62866af0
+    --hash=sha256:9649af414d74d4df115d5d718f82acb59c9d418196b7b4290ed47a12ce62df56
+prompt_toolkit==3.0.50 \
+    --hash=sha256:9b6427eb19e479d98acff65196a307c555eb567989e6d88ebbb1b509d9779198
+wcwidth==0.2.13 \
+    --hash=sha256:3da69048e4540d84af32131829ff948f1e022c1c6bdb8d6102117aac784f6859
+# SUPER OLD: `simplegeneric` has had no releases since Apr 1, 2012 (commenting out)
+#simplegeneric==0.8.1 \
+#    --hash=sha256:dc972e06094b9af5b855b3df4a646395e43d1c9d0d39ed345b7393560d0b9173
+isort==6.0.0 \
+    --hash=sha256:567954102bb47bb12e0fae62606570faacddd441e45683968c8d1734fb1af892
+# meld3 is required by supervisor (don't think it is anymore)
+# meld3==1.0.2 \
+#    --hash=sha256:b28a9bfac342aadb4557aa144bea9f8e6208bfb0596190570d10a892d35ff7dc
+supervisor==4.2.5 \
+    --hash=sha256:2ecaede32fc25af814696374b79e42644ecaba5c09494c51016ffda9602d0f08
