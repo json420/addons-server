@@ -1,5 +1,0 @@
--r prod_common.txt
-atpublic==5.1 \
-    --hash=sha256:135783dbd887fbddb6ef032d104da70c124f2b44b9e2d79df07b9da5334825e3
-flufl.lock==8.1.0 \
-    --hash=sha256:a01b2153d1b0cc170a26b1413037debbe94af6a1cd23164b3b2b229f766b164f

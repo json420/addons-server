@@ -205,3 +205,8 @@ sqlparse==0.5.3 \
     --hash=sha256:cf2196ed3418f3ba5de6af7e82c694a9fbdbfecccdfc72e281548517081f16ca
 python-magic==0.4.27 \
     --hash=sha256:c212960ad306f700aa0d01e5d7a325d20548ff97eb9920dcd29513174f0294d3
+# Formerly in prod_py3.txt, prod_py3django22txt
+atpublic==5.1 \
+    --hash=sha256:135783dbd887fbddb6ef032d104da70c124f2b44b9e2d79df07b9da5334825e3
+flufl.lock==8.1.0 \
+    --hash=sha256:a01b2153d1b0cc170a26b1413037debbe94af6a1cd23164b3b2b229f766b164f
