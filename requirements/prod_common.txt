@@ -13,8 +13,8 @@ markupsafe==3.0.2 \
 maxminddb==2.6.3 \
     --hash=sha256:d4bac2b7b7609bed8dcf6beef1ef4a1e411e9e39c311070ffc2ace80d6de6444
 # FIXME: issues remain with mysqlclient
-#mysqlclient==2.2.7 \
-#    --hash=sha256:24ae22b59416d5fcce7e99c9d37548350b4565baac82f95e149cac6ce4163845
+mysqlclient==2.2.7 \
+    --hash=sha256:24ae22b59416d5fcce7e99c9d37548350b4565baac82f95e149cac6ce4163845
 pillow==11.1.0 \
     --hash=sha256:837060a8599b8f5d402e97197d4924f05a2e0d68756998345c829c33186217b1
 # PyJWT is required by djangorestframework-jwt
