@@ -22,7 +22,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.python3
-    command: supervisord -n -c /code/docker/supervisor-celery.conf
+    command: python3 -m venv /ourvenv && supervisord -n -c /code/docker/supervisor-celery.conf
     entrypoint: ./scripts/start-docker.sh
     volumes:
       - .:/code
