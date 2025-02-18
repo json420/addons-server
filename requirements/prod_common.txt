@@ -42,6 +42,12 @@ botocore==1.36.21 \
 # click-didyoumean is required by celery
 click-didyoumean==0.3.1 \
     --hash=sha256:5c4bb6007cfea5f2fd6583a2fb6701a22a41eb98957e63d0fac41c10e7c3117c
+# wcwidth is required by prompt-toolkit
+wcwidth==0.2.13 \
+    --hash=sha256:3da69048e4540d84af32131829ff948f1e022c1c6bdb8d6102117aac784f6859
+# prompt-toolkit is required by click-repl
+prompt-toolkit==3.0.50 \
+    --hash=sha256:9b6427eb19e479d98acff65196a307c555eb567989e6d88ebbb1b509d9779198
 # click-repl is required by celery
 click-repl==0.3.0 \
     --hash=sha256:fb7e06deb8da8de86180a33a9da97ac316751c094c6899382da7feeeeb51b812
@@ -89,8 +95,8 @@ django-csp==3.8 \
 django-environ==0.12.0 \
     --hash=sha256:92fb346a158abda07ffe6eb23135ce92843af06ecf8753f43adf9d2366dcc0ca
 # OLD: `django-extended-choices` has had no releases since Apr 16, 2019
-django-extended-choices==1.3.3 \
-    --hash=sha256:609cafc2feaf352cb92b3978a6e71fcb267dd2d3281ffa964d736b9bf71ec34b
+#django-extended-choices==1.3.3 \
+#    --hash=sha256:609cafc2feaf352cb92b3978a6e71fcb267dd2d3281ffa964d736b9bf71ec34b
 django-extensions==3.2.3 \
     --hash=sha256:9600b7562f79a92cbf1fde6403c04fee314608fefbb595502e34383ae8203401
 django-mozilla-product-details==1.0.3 \
@@ -204,6 +210,9 @@ polib==1.2.0 \
 #    --hash=sha256:faafd55d0cbc204b60d58969675435087b18b5ff43edebaacff822b2ff93b255
 pyquery==2.0.1 \
     --hash=sha256:aedfa0bd0eb9afc94b3ddbec8f375a6362b32bc9662f46e3e0d866483f4771b0
+# six is required by python-dateutil
+six==1.17.0 \
+    --hash=sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274
 # python-dateutil is required by elasticsearch-dsl
 python-dateutil==2.9.0.post0 \
     --hash=sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427
