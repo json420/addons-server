@@ -200,7 +200,7 @@ perf-tests: setup-ui-tests
 
 .PHONY: setup-codestyle
 setup-codestyle:
-	$(PIP_COMMAND) install --require-virtualenv --require-hashes --progress-bar=off -r requirements/codestyle_py${PYTHON_VERSION_MAJOR}.txt
+	$(PIP_COMMAND) install --require-virtualenv --require-hashes --progress-bar=off -r requirements/codestyle_common.txt
 
 .PHONY: lint-codestyle
 lint-codestyle:
