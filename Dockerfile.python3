@@ -24,6 +24,7 @@ RUN apt-get install -y \
         libffi-dev \
         libssl-dev \
         libmagic-dev \
+        python3-dev \
         python3-venv \
         python3-pip \
         nodejs \
@@ -62,11 +63,8 @@ RUN localedef -i en_US -f UTF-8 en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-RUN python3 -m venv /ourvenv
-
 COPY . /code
 WORKDIR /code
-
 
 ENV PIP_BUILD=/deps/build/
 ENV PIP_CACHE_DIR=/deps/cache/
@@ -74,10 +72,15 @@ ENV PIP_SRC=/deps/src/
 ENV NPM_CONFIG_PREFIX=/deps/
 ENV SWIG_FEATURES="-D__x86_64__"
 
+# Setup a Python venv in which to do the pip installs
+RUN python3 -m venv /mozvenv
+ENV PATH="/mozvenv/bin:${PATH}"
+ENV VIRTUAL_ENV=/mozvenv
+
 # Install all python requires
 RUN mkdir -p /deps/{build,cache,src}
 RUN ln -s /code/package.json /deps/package.json
-RUN . /ourvenv/bin/activate && make update_deps
+RUN make update_deps
 RUN rm -rf /deps/build/ /deps/cache/
 
 # Preserve bash history across image updates.

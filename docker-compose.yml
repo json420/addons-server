@@ -14,6 +14,7 @@ x-env-mapping: &env
     - PYTHONDONTWRITEBYTECODE=1
     - PYTHONUNBUFFERED=1
     - TERM=xterm-256color
+    - VIRTUAL_ENV=/mozvenv
 
 services:
   worker: &worker
@@ -22,7 +23,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.python3
-    command: python3 -m venv /ourvenv && supervisord -n -c /code/docker/supervisor-celery.conf
+    command: /mozvenv/bin/supervisord -n -c /code/docker/supervisor-celery.conf
     entrypoint: ./scripts/start-docker.sh
     volumes:
       - .:/code
