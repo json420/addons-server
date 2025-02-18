@@ -5,6 +5,24 @@ pyinotify==0.9.6 \
 # https://github.com/mozilla/addons-server/issues/5380
 ipdb==0.13.13 \
     --hash=sha256:45529994741c4ab6d2388bfa5d7b725c2cf7fe9deffabdb8a6113aa5ed449ed4
+# parso is required by jedi
+parso==0.8.4 \
+    --hash=sha256:a418670a20291dacd2dddc80c377c5c3791378ee1e8d12bffc35420643d43f18
+# jedi is required by ipython
+jedi==0.19.2 \
+    --hash=sha256:a8ef22bde8490f57fe5c7681a3c83cb58874daf72b4784de3cce5b6ef6edb5b9
+matplotlib-inline==0.1.7 \
+    --hash=sha256:df192d39a4ff8f21b1895d72e6a13f5fcc5099f00fa84384e0ea28c2cc0653ca
+pygments==2.19.1 \
+    --hash=sha256:9ea1544ad55cecf4b8242fab6dd35a93bbce657034b0611ee383099054ab6d8c
+executing==2.2.0 \
+    --hash=sha256:11387150cad388d62750327a53d3339fad4888b39a6fe233c3afbb54ecffd3aa
+asttokens==3.0.0 \
+    --hash=sha256:e3078351a059199dd5138cb1c706e6430c05eff2ff136af5eb4790f9d28932e2
+pure-eval==0.2.3 \
+    --hash=sha256:1db8e35b67b3d218d818ae653e27f06c3aa420901fa7b081ca98cbedc874e0d0
+stack_data==0.6.3 \
+    --hash=sha256:d5558e0c25a4cb0853cddad3d77da9891a08cb85dd9f9f91b9f8cd66e511e695
 ipython==8.32.0 \
     --hash=sha256:cae85b0c61eff1fc48b0a8002de5958b6528fa9c8defb1894da63f42613708aa
 watchdog==6.0.0 \
@@ -35,5 +53,8 @@ isort==6.0.0 \
 # meld3 is required by supervisor (don't think it is anymore)
 # meld3==1.0.2 \
 #    --hash=sha256:b28a9bfac342aadb4557aa144bea9f8e6208bfb0596190570d10a892d35ff7dc
+# six is required by supervisor
+six==1.17.0 \
+    --hash=sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274
 supervisor==4.2.5 \
     --hash=sha256:2ecaede32fc25af814696374b79e42644ecaba5c09494c51016ffda9602d0f08
