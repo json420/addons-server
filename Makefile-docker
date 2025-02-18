@@ -129,7 +129,7 @@ install_python_test_dependencies:
 .PHONY: install_python_dev_dependencies
 install_python_dev_dependencies: install_python_test_dependencies setup-codestyle
 	$(PIP_COMMAND) install --require-virtualenv --require-hashes --progress-bar=off -r requirements/dev.txt
-	$(PIP_COMMAND) install --require-virtualenv --require-hashes --progress-bar=off -r requirements/docs.txt
+	#$(PIP_COMMAND) install --require-virtualenv --require-hashes --progress-bar=off -r requirements/docs.txt
 	$(PIP_COMMAND) install -e .
 
 .PHONY: install_node_dependencies
