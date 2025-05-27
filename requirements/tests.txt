@@ -16,6 +16,9 @@ py==1.11.0 \
 # pytest is required by amo-validator, pytest-base-url, pytest-cov, pytest-django, pytest-html, pytest-instafail, pytest-selenium, pytest-variables, pytest-xdist
 pytest==8.3.5 \
     --hash=sha256:c69214aa47deac29fad6c2a4f590b9c4a9fdb16a403176fe154b79c0b4d4d820
+# iniconfig is required by pytest
+iniconfig==2.1.0 \
+    --hash=sha256:9deba5723312380e77435581c6bf4935c94cbfab9b1ed33ef8d238ea168eb760
 pytest-django==4.11.1 \
     --hash=sha256:1b63773f648aa3d8541000c26929c1ea63934be1cfa674c76436966d73fe6a10
 pytest-xdist==3.7.0 \
