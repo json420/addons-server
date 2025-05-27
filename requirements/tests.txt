@@ -49,6 +49,9 @@ atomicwrites==1.4.1 \
     --hash=sha256:81b2c9071a49367a7f770170e5eec8cb66567cfbbc8c73d20ce5ca4a8d71cf11
 PyFxA==0.8.1 \
     --hash=sha256:f12798fc5f3c9848c1de8048f333b7bdb3b0658daac506c843a4ebfc8df0efb8
+# PyJWT is required by PyFxA
+PyJWT==2.10.1 \
+    --hash=sha256:dcdd193e30abefd5debf142f9adfcdd2b58004e644f25406ffaebd50bd98dacb
 # FIXME: Super old: PyBrowserID has had no releases since Jan 11, 2018
 PyBrowserID==0.14.0 \
     --hash=sha256:6c227669e87cc25796ae76f6a0ef65025528c8ad82d352679fa9a3e5663a71e3 \
