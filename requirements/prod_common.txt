@@ -106,15 +106,15 @@ django-multidb-router==0.10 \
 django-post-request-task==0.5 \
     --hash=sha256:91df3893c9551851cd10568ef3b2cf358bd87e8c65dce728c37196a8de34247c
 ## OLD: `django-statsd-mozilla` has had no releases since Sep 1, 2017
-#django-statsd-mozilla==0.4.0 \
-#    --hash=sha256:81084f3d426f5184f0a0f1dbfe035cc26b66f041d2184559d916a228d856f0d3
+django-statsd-mozilla==0.4.0 \
+    --hash=sha256:81084f3d426f5184f0a0f1dbfe035cc26b66f041d2184559d916a228d856f0d3
 django-statsd==2.7.0 \
     --hash=sha256:6f59bcfbbdf0fe204e01a0cdc2e4ab279e1261fa19a4d1f32acb0a74dcc28e12
 python_statsd==2.1.0 \
     --hash=sha256:f0b8b3333a7d474a3b0ece069e4849febdc66d2712d5290aea6ff1189a05fb80
 # statsd is required by django-statsd-mozilla
-statsd==4.0.1 \
-    --hash=sha256:c2676519927f7afade3723aca9ca8ea986ef5b059556a980a867721ca69df093
+statsd==3.3.0 \
+    --hash=sha256:c610fb80347fca0ef62666d241bce64184bd7cc1efe582f9690e045c25535eaa
 django-tables2==2.7.5 \
     --hash=sha256:d9338937797207ffb6f481be2125c5ec3a0bb1858d409c672cc25fc5d654cb22
 django-waffle==4.2.0 \
